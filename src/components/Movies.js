@@ -1,24 +1,25 @@
-// Movies.js
-import React from 'react';
-import { movies } from '../data';
+import React from "react";
+import { movies } from "../data";
 
-const Movies = () => {
+function Movies() {
+  const movieList = movies.map((mov, index) => (
+    <div key={index}>
+      <h1>{mov.title}</h1>
+      <h2>{mov.time}</h2>
+      <ul>
+        {mov.genres.map((genre, genreIndex) => (
+          <li key={genreIndex}>{genre}</li>
+        ))}
+      </ul>
+    </div>
+  ));
+
   return (
     <div>
       <h1>Movies Page</h1>
-      {movies.map(movie => (
-        <div key={movie.id}>
-          <h2>{movie.title}</h2>
-          <p>Time: {movie.time}</p>
-          <ul>
-            {movie.genres.map(genre => (
-              <li key={genre}>{genre}</li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      {movieList}
     </div>
   );
-};
+}
 
 export default Movies;
